@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Collage background */
+.background {
+    position: fixed;
+    inset: 0;
+    background-image:
+        url("images/pic1.jpg"),
+        url("images/pic2.jpeg"),
+        url("images/pic3.jpeg"),
+        url("images/pic4.jpeg"),
+        url("images/pic5.jpeg"),
+        url("images/pic6.jpeg"),
+        url("images/pic7.jpeg");
+    background-size: 50% 50%;
+    background-position:
+        top left,
+        top right,
+        bottom left,
+        bottom right;
+    background-repeat: no-repeat;
+
+    /* MUCH lighter blur */
+    filter: blur(2px) brightness(0.9);
+
+    z-index: -1;
+}
+
+
+/* White center card */
+.card {
+    background: white;
+    width: 420px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #d6336c;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.yes {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+.no {
+    background-color: #adb5bd;
+    color: white;
+}
+.sparkle {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+
+    background: radial-gradient(circle, 
+        #fff 10%, 
+        #ff4d6d 45%, 
+        #ff85a1 75%,
+        transparent
+    );
+
+    box-shadow:
+        0 0 8px #ff4d6d,
+        0 0 14px #ff85a1;
+
+    animation: explode 1.3s ease-out forwards;
+}
+.collage {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        #ffe0e9,
+        #fff0f5
+    );
+    z-index: -2;
+}
+.collage img {
+    position: absolute;
+    width: 220px;
+    height: auto;
+    border-radius: 14px;
+    object-fit: cover;
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.25),
+        0 0 20px rgba(255, 77, 109, 0.2);
+
+    opacity: 0.95;
+}
+.collage::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(2px);
+}
+
+
+
+@keyframes explode {
+    from {
+        transform: scale(1) translate(0, 0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0) translate(var(--x), var(--y));
+        opacity: 0;
+    }
+}
